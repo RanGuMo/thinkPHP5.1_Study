@@ -66,3 +66,18 @@ return $this->fetch("hello");
 ![image-20230920233334251](../../source/images/thinkPhp学习笔记/image-20230920233334251.png)
 
 ![image-20230920233423928](../../source/images/thinkPhp学习笔记/image-20230920233423928.png)
+
+## 9.页面跳转 success
+
+![image-20230921225448493](../../source/images/thinkPhp学习笔记/image-20230921225448493.png)
+
+![image-20230921225633777](../../source/images/thinkPhp学习笔记/image-20230921225633777.png)
+
+## 10.页面跳转 error
+
+error 失败后，会返回上一页，没有跳转页面
+
+```php
+ return $this->error('失败了');
+```
+
