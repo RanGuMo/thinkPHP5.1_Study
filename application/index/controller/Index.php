@@ -2,6 +2,9 @@
 namespace app\index\controller;
 
 use think\Controller;
+
+use think\Db; //引入数据库
+
 class Index extends Controller
 {
     public function index()
@@ -18,5 +21,10 @@ class Index extends Controller
         // return 'hello,' . $name;
         // return $this->success('成功了','index');
         return $this->error('失败了');
+    }
+
+    public function select(){
+        $list = Db::table("student")->select(); //查询所有数据
+        return json($list); //转为json格式返回
     }
 }

@@ -81,3 +81,15 @@ error 失败后，会返回上一页，没有跳转页面
  return $this->error('失败了');
 ```
 
+## 11.端口占用解决
+
+![image-20230921230116863](../../source/images/thinkPhp学习笔记/image-20230921230116863.png)
+
+```bash
+netstat -ano|findstr 5173(端口号) 
+taskkill -pid 27964(进程号) -f
+```
+
+## 12.查询数据库
+
+![image-20230921231934518](../../source/images/thinkPhp学习笔记/image-20230921231934518.png)
