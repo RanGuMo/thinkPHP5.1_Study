@@ -93,3 +93,108 @@ taskkill -pid 27964(进程号) -f
 ## 12.查询数据库
 
 ![image-20230921231934518](../../source/images/thinkPhp学习笔记/image-20230921231934518.png)
+
+## 13.mvc模式
+
+![image-20230922223452610](../../source/images/thinkPhp学习笔记/image-20230922223452610.png)
+
+## 14. mvc模式进行增删改查
+
+![image-20230922223634891](../../source/images/thinkPhp学习笔记/image-20230922223634891.png)
+
+![image-20230922223857805](../../source/images/thinkPhp学习笔记/image-20230922223857805.png)
+
+![image-20230922224156610](../../source/images/thinkPhp学习笔记/image-20230922224156610.png)
+
+### 14.1 列表查询 Controller层
+
+```php
+<?php
+namespace app\index\controller;
+use think\Controller;
+
+use app\index\model\StudentModel;
+
+class StudentController extends Controller{
+    public function  index(){
+        $model = new StudentModel();
+        $to = $model->index();
+        // var_dump($to); //打印数据
+        // return json($to);
+        $this->assign('list',$to);
+        return $this->fetch();
+    }
+}
+
+
+
+?>
+```
+
+### 14.2 列表查询 Model层
+
+```php
+<?php
+namespace app\index\model;
+use think\Model;
+
+use think\Db;
+
+class StudentModel extends Model{
+    // 查询列表
+    public function index(){
+        $list = Db::table('student')->select();
+        return $list;
+    }
+}
+
+
+
+?>
+```
+
+### 14.3 列表查询view视图层
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>班级</th>
+                <th>操作</th>
+            </tr>
+            {volist name="list" id="vo"}
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.name}</td>
+                <td>{$vo.sex}</td>
+                <td>{$vo.age}</td>
+                <td>{$vo.classes}</td>
+                <td>
+                    <a href="">修改</a>
+                    <a href="">删除</a>
+                </td>
+            </tr>
+            {/volist}
+            <tr></tr>
+    </table>
+
+
+</body>
+</html>
+```
+
+![image-20230922225745312](../../source/images/thinkPhp学习笔记/image-20230922225745312.png)
+
+![image-20230922225815761](../../source/images/thinkPhp学习笔记/image-20230922225815761.png)
