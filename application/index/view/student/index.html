@@ -20,7 +20,10 @@
             <tr>
                 <td>{$vo.id}</td>
                 <td>{$vo.name}</td>
-                <td>{$vo.sex}</td>
+                <!-- <td>{$vo.sex}</td> -->
+                <td>
+                    {if $vo.sex == 1}男 {else} 女 {/if}
+                </td>
                 <td>{$vo.age}</td>
                 <td>{$vo.classes}</td>
                 <td>
@@ -29,7 +32,11 @@
                 </td>
             </tr>
             {/volist}
-            <tr></tr>
+            <tr>
+                <td colspan="5">
+                    <a href="{:url('student/add')}">添加</a>
+                </td>
+            </tr>
     </table>
 
 
