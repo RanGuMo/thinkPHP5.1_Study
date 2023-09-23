@@ -49,6 +49,33 @@ class StudentController extends Controller{
     }
 
 
+     // 修改页面
+     public function edit(Request $request){
+        $id = $request->id;
+        $model = new StudentModel();
+        $to = $model->edit($id);
+        $this->assign('datas',$to); //回显使用
+        return $this->fetch();
+    }
+    // 修改功能
+    public function edits(Request $request){
+
+        $data =[
+            'id'=>$request->id, //修改需要传递id
+            'name'=>$request->names,
+            'sex'=>$request->sex,
+            'class'=>$request->classes,
+            'age'=>$request->age,
+        ];
+        $model = new StudentModel();
+        $to = $model->edits($data); //调用模型中的方法
+        if($to){
+            return $this->success('修改成功','index');
+        }
+        return $this->error('修改失败');
+    }
+
+
 
 
 }

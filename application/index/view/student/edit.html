@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="{:url('student/edits',['id'=>$datas.id])}" method="post">
+        <p>姓名：<input type="text" name="names" value="{$datas.name}"></p>
+        <p>性别：<input type="text" name="sex" value="{$datas.sex}"></p>
+        <p>年龄 <input type="text" name="age" value="{$datas.age}"></p>
+        <p>班级：<input type="text" name="classes" value="{$datas.classes}"></p>
+        <p><input type="submit" value="修改"></p>
+    </form>
+
+
+</body>
+
+</html>

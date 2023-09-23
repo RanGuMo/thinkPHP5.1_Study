@@ -31,6 +31,27 @@ class StudentModel extends Model{
         return $del;
     }
 
+
+    // 根据id查询一条数据
+    public function edit($id){
+        $find = Db::table('student')->where('id',$id)->find();
+        return $find;
+    }
+
+    // 修改功能
+    public function edits($data){
+        $edits = Db::table('student')->where('id',$data['id'])->update([
+            'name' => $data['name'],
+            'age' => $data['age'],
+            'sex' => $data['sex'],
+            'classes'=> $data['class'],
+            'update_time'=>time()
+        ]
+        );
+        return $edits;
+    }
+
+
 }
 
 
