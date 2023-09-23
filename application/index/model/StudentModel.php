@@ -24,6 +24,13 @@ class StudentModel extends Model{
         );
         return $adds;
     }
+
+    // 删除功能
+    public function del($id){
+        $del = Db::table('student')->where('id',$id)->delete();
+        return $del;
+    }
+
 }
 
 

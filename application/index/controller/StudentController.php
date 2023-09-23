@@ -37,6 +37,17 @@ class StudentController extends Controller{
         return $this->error('添加失败');
     }
 
+    // 删除功能
+    public function del(Request $request){
+        $id = $request->id;
+        $model = new StudentModel();
+        $to =   $model->del($id);
+        if($to){
+            return $this->success('删除成功','index');
+        }
+        return $this->error('删除失败');
+    }
+
 
 
 
